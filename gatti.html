@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/gatti.css">
+</head>
+<body>
+    <section class="bio contenitore">
+        <div class="text">
+            <div class="sticky">
+                <h2>OPERE</h2>
+                <nav class="lista">
+                    <ul>
+                            <li class="btn" onclick="filterSelection ('all')">GLI ESORDI</li>
+                            <li class="btn" onclick="filterSelection ('nature')">I PROTAGONISTI</li>
+                            <li class="btn" onclick="filterSelection ('cars')">I TEMI</li>
+                    </ul>
+                </nav> 
+            </div>
+        </div> 
+    
+    
+    
+    <div class="main">
+
+        
+        
+        <!-- Portfolio Gallery Grid -->
+        <div class="row">
+          <div class="column nature">
+            <div class="content">
+              <img src="/sticky/immagini/prova/1.jpg" alt="Mountains" style="width:100%">
+              
+            </div>
+          </div>
+          <div class="column nature">
+            <div class="content">
+            <img src="/sticky/immagini/prova/2.jpg" alt="Lights" style="width:100%">
+            
+            </div>
+          </div>
+          <div class="column nature">
+            <div class="content">
+            <img src="/sticky/immagini/prova/3.jpg" alt="Nature" style="width:100%">
+            
+            </div>
+          </div>
+          
+          <div class="column cars">
+            <div class="content">
+              <img src="/sticky/immagini/prova/4.jpg" alt="Car" style="width:100%">
+              
+            </div>
+          </div>
+          <div class="column cars">
+            <div class="content">
+            <img src="/sticky/immagini/prova/5.jpg" alt="Car" style="width:100%">
+             
+            </div>
+          </div>
+          <div class="column cars">
+            <div class="content">
+            <img src="/sticky/immagini/prova/6.jpg" alt="Car" style="width:100%">
+             
+            </div>
+          </div>
+        
+          <div class="column people">
+            <div class="content">
+              <img src="/sticky/immagini/prova/7.jpg" alt="Car" style="width:100%">
+              
+            </div>
+          </div>
+          <div class="column people">
+            <div class="content">
+            <img src="/sticky/immagini/prova/8.jpg" alt="Car" style="width:100%">
+              
+            </div>
+          </div>
+          <div class="column people">
+            <div class="content">
+            <img src="/w3images/people3.jpg" alt="Car" style="width:100%">
+             
+            </div>
+          </div>
+        <!-- END GRID -->
+        </div>
+        
+        <!-- END MAIN -->
+        </div>
+        
+        <script>
+        filterSelection("all")
+        function filterSelection(c) {
+          var x, i;
+          x = document.getElementsByClassName("column");
+          if (c == "all") c = "";
+          for (i = 0; i < x.length; i++) {
+            RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+          }
+        }
+        
+        function AddClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+          }
+        }
+        
+        function RemoveClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+              arr1.splice(arr1.indexOf(arr2[i]), 1);     
+            }
+          }
+          element.className = arr1.join(" ");
+        }
+        
+        
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function(){
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+          });
+        }
+        </script>
+</body>
+</html>
